@@ -365,8 +365,8 @@ public class AppWidget extends AppWidgetProvider {
         int minutes = c.get(Calendar.MINUTE);
         int seconds = c.get(Calendar.SECOND);
 
-        Toast.makeText(context, "UPDATE", Toast.LENGTH_LONG).show();
-        Log.d("ONUPDATE", "ONUPDATE");
+        //Toast.makeText(context, "UPDATE", Toast.LENGTH_LONG).show();
+        //Log.d("ONUPDATE", "ONUPDATE");
 
         if (reset.contains("isReset")) {
             isReset = reset.getBoolean("isReset", false);

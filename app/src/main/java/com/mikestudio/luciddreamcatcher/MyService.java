@@ -152,7 +152,7 @@ public class MyService extends Service {
                 editor.putLong("timeSTART", timeStart);
                 editor.apply();
                 timeStart = sharedPreferences.getLong("timeSTART", -1);
-                Toast.makeText(getApplicationContext(), String.valueOf(timeStart), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), String.valueOf(timeStart), Toast.LENGTH_SHORT).show();
             }
             if (intent.getExtras().containsKey("timeEnd")) {
                 timeEnd = intent.getLongExtra("timeEnd", -1);
@@ -160,7 +160,7 @@ public class MyService extends Service {
                 editor.putLong("timeEND", timeEnd);
                 editor.apply();
                 timeEnd = sharedPreferences.getLong("timeEND", -1);
-                Toast.makeText(getApplicationContext(), String.valueOf(timeEnd), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), String.valueOf(timeEnd), Toast.LENGTH_SHORT).show();
             }
             isTap = true;
             stopSelf();
@@ -221,19 +221,19 @@ public class MyService extends Service {
             if (System.currentTimeMillis() > end) {//по завершении тихого режима перезаписываем значения начало и конец
                 // с теми же ключами чтобы они сработали через 24 часа
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                Toast.makeText(getApplicationContext(), "Перезаписываем", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Перезаписываем", Toast.LENGTH_SHORT).show();
                 if (start < end) {
                     start = start + 24 * 60 * 60 * 1000;
                     editor.putLong("timeSTART", start);
                     end = end + 24 * 60 * 60 * 1000;
                     editor.putLong("timeEND", end);
                     editor.apply();
-                    Toast.makeText(getApplicationContext(), " 4  start>end", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), " 4  start>end", Toast.LENGTH_SHORT).show();
                 }
                 if (start > end) {
                     end = end + 24 * 60 * 60 * 1000;
                     editor.putLong("timeEND", end);
-                    Toast.makeText(getApplicationContext(), "1 or 4 or 3 start>end", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "1 or 4 or 3 start>end", Toast.LENGTH_SHORT).show();
                     editor.apply();
                 }
                 //ТИХИЙ РЕЖИМ ЕСЛИ ДОЛГОЕ ВРЕМЯ ТЕЛЕФОН БЫЛ ВЫКЛЮЧЕН
@@ -242,14 +242,14 @@ public class MyService extends Service {
                     start = start + days * 24 * 60 * 60 * 1000;//прибавляем к времени старта кол-во ПОЛНЫХ дней когда сигнал не звенел
                     editor.putLong("timeSTART", start);
                     editor.apply();
-                    Toast.makeText(getApplicationContext(),"Perevod start " + days, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(),"Perevod start " + days, Toast.LENGTH_SHORT).show();
                 }
                 if(System.currentTimeMillis()>=end + 24 * 60 * 60 * 1000){
                     int days = (int)(System.currentTimeMillis()-end)/(24 * 60 * 60 * 1000);//узнаем сколько целых дней не звенел сигнал
                     end = end + days * 24 * 60 * 60 * 1000;
                     editor.putLong("timeEND", end);
                     editor.apply();
-                    Toast.makeText(getApplicationContext(),"Perevod end " + days, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(),"Perevod end " + days, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -267,7 +267,7 @@ public class MyService extends Service {
             }
 
             if ((System.currentTimeMillis() >= start) && (System.currentTimeMillis() <= end)) {
-                Toast.makeText(getApplicationContext(), "SILENT MODE ON", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "SILENT MODE ON", Toast.LENGTH_SHORT).show();
                 isServiceStop = true;
                 stopSelf();
             }
@@ -286,7 +286,7 @@ public class MyService extends Service {
             if (!isServiceStop) {
                 if (audiomanager.getRingerMode() == AudioManager.RINGER_MODE_NORMAL ||
                         audiomanager.getRingerMode() == AudioManager.RINGER_MODE_VIBRATE) {//проверяем системный режим оповещений
-                    Toast.makeText(getApplicationContext(), "SERVICE ON", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "SERVICE ON", Toast.LENGTH_SHORT).show();
                     if (audiomanager.getRingerMode() != AudioManager.RINGER_MODE_VIBRATE) {
                         audiomanager.setStreamVolume(AudioManager.STREAM_MUSIC, audiomanager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), 0);
                         if (mediaPlayer != null) {

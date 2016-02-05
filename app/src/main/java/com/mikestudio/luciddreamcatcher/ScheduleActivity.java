@@ -315,7 +315,7 @@ public class ScheduleActivity extends AppCompatActivity implements View.OnClickL
             PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), 0, intent, 0);
             alarmManager.cancel(pendingIntent);
             isCustomAlarmSet = false;
-            Toast.makeText(getApplicationContext(),"CancelAlarm",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(),"CancelAlarm",Toast.LENGTH_SHORT).show();
            // SharedPreferences.Editor editor = mSettings.edit();
             editor.putBoolean("isAlarmSet", isCustomAlarmSet);
             editor.apply();
@@ -513,7 +513,7 @@ public class ScheduleActivity extends AppCompatActivity implements View.OnClickL
             Toast.makeText(getApplicationContext(),getResources().getString(R.string.AlarmCancelToast),Toast.LENGTH_LONG).show();
             cancelAlarm();
         } else if (!isCustomAlarmSet) {
-            Toast.makeText(getApplicationContext(), "пошла установка",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "пошла установка",Toast.LENGTH_SHORT).show();
 
             if (spinnerInterval.getSelectedItem().toString() != null) {
                 //на текущей дате считываем время
