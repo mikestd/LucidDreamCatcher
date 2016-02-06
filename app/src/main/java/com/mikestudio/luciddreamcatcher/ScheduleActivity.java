@@ -298,7 +298,7 @@ public class ScheduleActivity extends AppCompatActivity implements View.OnClickL
         Intent intent = new Intent(this, MyService.class).setAction("AlarmStart");
         long currentTime = System.currentTimeMillis();
         PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), 0, intent, 0);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, currentTime + (interval*60 * 1000), (interval*60 * 1000), pendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, currentTime + (interval * 60 * 1000), (interval * 60 * 1000), pendingIntent);
         isCustomAlarmSet = true;
         //SharedPreferences.Editor editor = mSettings.edit();
         editor.putBoolean("isAlarmSet", isCustomAlarmSet);

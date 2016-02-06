@@ -122,7 +122,7 @@ public class MyService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (intent.getAction() == "TapOnWidget"){//логика по тапу на виджет
-           /* if (mediaPlayer!=null || isVibrate){
+            if (mediaPlayer!=null || isVibrate){
                 if (mediaPlayer.isPlaying() || isVibrate){
                     Intent intent1 = new Intent(getApplicationContext(),CheckRealActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent1);
@@ -132,13 +132,14 @@ public class MyService extends Service {
                     Intent intent2 = new Intent(getApplicationContext(),MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent2);
                 }
-            }  else {*/
+            }  else {
                 Intent intent2 = new Intent(getApplicationContext(),MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent2);
             }
-            //isServiceStop = true;
-            //stopSelf();
-        //}
+            isServiceStop = true;
+            isTap = true;
+            stopSelf();
+        }
 
         if (intent.getAction() == "TapFromActivity/Widget") {//логика по тапу на виджет
             isTap = true;
@@ -304,7 +305,7 @@ public class MyService extends Service {
                         vibrator.vibrate(pattern, -1);
                         isVibrate = true;
                     }
-                    counter = new CountDownTimer(10000, 1000) { //запускаем таймер 10000 - все время, 1000 - один тик!
+                    counter = new CountDownTimer(20000, 1000) { //запускаем таймер 20000 - все время, 1000 - один тик!
 
                         @Override
                         public void onTick(long millisUntilFinished) {
