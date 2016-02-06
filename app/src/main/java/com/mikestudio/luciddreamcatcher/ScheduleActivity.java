@@ -609,7 +609,7 @@ public class ScheduleActivity extends AppCompatActivity implements View.OnClickL
                     file_name = audioPath.substring(temp + 1, audioPath.length()); //разделяем строку чтобы получить имя
                 }
 
-                mPath.setText(file_name);
+                mPath.setText(file_name);//don't work on lollipop +
                 startService(new Intent(getApplicationContext(), MyService.class).putExtra("soundPath", audioPath).setAction("setCustomAlarmSound"));
                 editor.putString("audio_name", file_name);
                 editor.putString("audio_path", audioPath);
