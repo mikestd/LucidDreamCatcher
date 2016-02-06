@@ -33,12 +33,13 @@ public class CheckRealActivity extends ActionBarActivity implements View.OnTouch
     final static String COUNT = "COUNT";
     static int countFeather = 0;
     TextView counter, headerText, SQLiteText, bottomText;
-    final String appPackageName = getPackageName();
+    String appPackageName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_real);
+        appPackageName = getApplicationContext().getPackageName();
         startService(new Intent(getApplicationContext(), MyService.class).setAction("TapFromActivity/Widget"));
         pero = (ImageView)findViewById(R.id.imageView2);
         pero.setOnTouchListener(this);

@@ -21,7 +21,7 @@ import android.widget.TextView;
 public class TargetListActivity extends ListActivity {
     final static String STRING ="com.mikestudio.luciddreamcatcher.STRING";
     final static String IMAGE = "com.mikestudio.luciddreamcatcher.IMAGE";
-    final String appPackageName = getPackageName();
+    String appPackageName;
     final static String SAVE = "settings";
     public SharedPreferences preferences;
    /* public Integer[] mTargetArray = new Integer[]{R.string.add,R.string.Bird,R.string.Trash,R.string.Sun,
@@ -43,6 +43,7 @@ public class TargetListActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         preferences = getSharedPreferences(SAVE, MODE_PRIVATE);
+        appPackageName = getApplicationContext().getPackageName();
         SharedPreferences.Editor editor = preferences.edit();
         mTargetArray =  getString(R.string.Add) + "%" + getString(R.string.Bird) + "%" + getString(R.string.Trash) + "%" +
                 getString(R.string.Sun) + "%" + getString(R.string.Plain) + "%" + getString(R.string.IceCream) + "%" +
