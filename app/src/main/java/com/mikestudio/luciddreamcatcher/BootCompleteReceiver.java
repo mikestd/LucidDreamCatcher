@@ -49,7 +49,7 @@ public class BootCompleteReceiver extends BroadcastReceiver {
                 Intent intentAlarm = new Intent(context, MyService.class).setAction("AlarmStart");
                 long currentTime = System.currentTimeMillis();
                 PendingIntent pendingIntent = PendingIntent.getService(context, 0, intentAlarm, 0);
-                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, currentTime + (interval * 60 * 1000), (interval * 60 * 1000), pendingIntent);
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, currentTime + (interval * 60 * 1000 / 2), (interval * 60 * 1000), pendingIntent);
             }
         }
     }
